@@ -1,0 +1,194 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-sizing: border-box;
+    
+}
+
+
+/* content box types */
+.container{
+    width: 100%;
+    display: block;
+}
+
+.userbox{
+    position: absolute;
+    right: 30px;
+    top: 20px;
+    width: 150px;
+    height: 150px;
+    background: red;
+}
+
+.header{
+    background-color: gray;
+    color: white;
+    padding: 10px;
+    display: block;
+    width: 100%;
+    text-align: center;
+    height: 50px;
+
+}
+
+.avatar{
+    height: 75px;
+    width: 75px;
+    background-color: goldenrod;
+    border-radius: 50px;
+}
+
+.main{
+    display: block;
+    width: 100%;
+    text-align: center;
+    color: grey;
+}
+
+.info{
+    display: inline-block;
+    background: white;
+    color: black;
+    border-radius: 20px;
+    box-shadow: 5px 5px grey;
+    padding: 20px;
+    vertical-align: top;
+    margin: 20px auto;
+    color: grey;
+}
+
+.wrapper{
+    text-align: center;
+    margin: 0px auto;
+}
+
+.wrapper_left{
+    text-align: left;
+    width: 100%;
+    display: block;
+}
+
+
+.imagebox{
+    width: 200px;
+    height: 120px;
+    background-color: grey;
+    margin: 0px auto;
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 3%;
+    margin-right: 3%;
+    margin-top: 10px;
+}
+.maincollab{
+    width: 600px;
+    height: 360px;
+    background-color: grey;
+    margin-top: 30px;
+    color: white;
+
+}
+.parentbox{
+    width: 200px;
+    height: 120px;
+    background-color: grey;
+    margin-left: 3%;
+    margin-right: 3%;
+    margin-top: 10px;
+
+}
+
+.push_top{
+    margin-top: 50px;
+}
+
+.indent30{
+    margin-left: 10%;
+}
+/* div and other box widths */
+
+.quarter{
+    width: 24.9%;
+}
+.half{
+    width: 49.6%;
+}
+
+.full{
+    width: 99.2%;
+}
+
+.wide{
+    width: 74.7%;
+}
+
+.auto{
+    margin: 0px auto;
+}
+
+/* text orientations */
+
+.left{
+    text-align: left;
+}
+
+.right{
+    text-align: right;
+}
+
+.center{
+    text-align: center;
+}
+
+.inline{
+    display: inline-block;
+}
+
+.top{
+    vertical-align: top;
+}
+
+.bottom{
+    vertical-align: text-bottom;
+}
+
+/* extra styling */
+
+a{
+    color: goldenrod;
+}
+
+.indent{
+    margin-left: 20px;
+}
+
+.outline{
+    outline-style: solid;
+    outline-color: lightgrey;
+    outline-width: 1px;
+}
+
+/* colors */
+
+.gold{
+    color: goldenrod;
+}
+
+.scroll{
+    overflow-y: scroll;
+}
+
+.italic{
+    font-style: italic;
+}
+
+.small{
+    font-size: 10px;
+}
+
+.faded{
+    color: lightgrey;
+}
+

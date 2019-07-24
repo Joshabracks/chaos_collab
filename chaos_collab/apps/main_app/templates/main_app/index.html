@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dojo Reads</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'main_app/css/style.css' %}">
+
+</head>
+
+<body>
+    <div class='container'>
+        <div class='header'>
+            <h1>Welcome!</h1>
+        </div>
+        <div class="main">
+            <div class="wrapper half inline">
+                <div class="info half">
+                    <form action="/register" method="post">
+                        {% csrf_token %}
+                        <h1>Register</h1>
+                        <table class="full">
+                            <tr>
+                                <td class="right">Name:</td>
+                                <td class="left"><input type="text" name="name" class="full"></td>
+                            </tr>
+                            <tr>
+                                <td class="right">Alias:</td>
+                                <td class="left"><input type="text" name="alias" class="full"></td>
+                            </tr>
+                            <tr>
+                                <td class="right">Email:</td>
+                                <td class="left"><input type="text" name="email" class="full"></td>
+                            </tr>
+                            <tr>
+                                <td class="right">Password:</td>
+                                <td class="left"><input type="password" name="password" class="full"></td>
+                            </tr>
+                            <tr>
+                                <td class="right">Confirrm PW:</td>
+                                <td class="left"><input type="password" name="cpassword" class="full"></td>
+                            </tr>
+                            <tr>
+                                <td class="right"></td>
+                                <td class="right"><input type="submit" value="Register"></td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+            </div>
+            <div class="wrapper half inline">
+
+                <div class="info half">
+                    <form action="/login" method="post">
+                        {% csrf_token %}
+                        <h1>Login</h1>
+                        <table class="full">
+                            <tr>
+                                <td class="right">Email:</td>
+                                <td class="left"><input type="text" name="email" class="full"></td>
+                            </tr>
+                            <tr>
+                                <td class="right">Password:</td>
+                                <td class="left"><input type="password" name="password" class="full"></td>
+                            </tr>
+                            <tr>
+                                <td class="right"></td>
+                                <td class="right"><input type="submit" value="Log in"></td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+            </div>
+            {% for message in messages %}
+            <p>{{ message }}</p>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+
+</html>
