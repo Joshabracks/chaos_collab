@@ -42,3 +42,6 @@ def logout(request):
 
 def look(request):
     return render(request, 'main_app/now.html')
+
+def canvas(request):
+    return render(request, 'main_app/canvas.html')

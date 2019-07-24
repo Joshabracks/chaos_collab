@@ -192,3 +192,21 @@ a{
     color: lightgrey;
 }
 
+/* controller for canvas */
+
+
+#controllers {
+    width: 600px;
+    font-size: 0.8em;
+    color: #333;
+  }
+  #paint {
+    border: 1px solid #000;
+    background: #fff;
+  }
+  .controller {
+    display: inline-block;
+    background: #eee;
+    border: 1px solid #e7e7e7;
+    padding: 5px;
+  }
