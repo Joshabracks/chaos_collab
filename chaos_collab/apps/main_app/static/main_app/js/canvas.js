@@ -26,8 +26,8 @@
           var restore_state = pop.pop();
           var img = new Element('img', {'src':restore_state});
           img.onload = function() {
-            ctx.clearRect(0, 0, 600, 400);
-            ctx.drawImage(img, 0, 0, 600, 400, 0, 0, 600, 400);  
+            ctx.clearRect(0, 0, 1200, 720);
+            ctx.drawImage(img, 0, 0, 1200, 720, 0, 0, 1200, 720);  
           }
         }
       }
@@ -35,7 +35,7 @@
     
     var pencil = {
       options: {
-        stroke_color: ['00', '00', '00'],
+        stroke_color: ['00', '55', '00'],
         dim: 4
       },
       init: function(canvas, ctx) {
