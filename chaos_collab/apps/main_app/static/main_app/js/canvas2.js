@@ -1,6 +1,6 @@
-(function($) {
+(function(fn) {
     var tool;
-    var canvas = $('paint');
+    var canvas = fn('paint');
     var ctx = canvas.getContext('2d');
     
     var history = {
@@ -26,18 +26,21 @@
           var restore_state = pop.pop();
           var img = new Element('img', {'src':restore_state});
           img.onload = function() {
-            ctx.clearRect(0, 0, 600, 400);
-            ctx.drawImage(img, 0, 0, 600, 400, 0, 0, 600, 400);  
+            ctx.clearRect(0, 0, 1200, 720);
+            ctx.drawImage(img, 0, 0, 1200, 720, 0, 0, 1200, 720);  
           }
         }
       }
     }
-    
+
     var pencil = {
       options: {
-        stroke_color: ['00', '00', '00'],
-        dim: 4
+        stroke_color: 'rgb(0,255,0)',
+        dim: 200
       },
+
+    
+      
       init: function(canvas, ctx) {
         this.canvas = canvas;
         this.canvas_coords = this.canvas.getCoordinates();
@@ -66,6 +69,7 @@
           var y = evt.page.y - this.canvas_coords.top;
           this.ctx.lineTo(x, y);
           this.ctx.stroke();
+          this.ctx.strokeStyle = this.options.stroke_color;
           
         }
       },
@@ -74,17 +78,33 @@
       }
     };
     
-    $('pencil').addEvent('click', function() {
+    fn('pencil').addEvent('click', function() {
       pencil.init(canvas, ctx);
     });
     
-    $('undo').addEvent('click', function() {
+    fn('undo').addEvent('click', function() {
       history.undo(canvas, ctx);
     });
     
-    $('redo').addEvent('click', function() {
+    fn('redo').addEvent('click', function() {
       history.redo(canvas, ctx);
     });
+
+    fn('color_red').addEvent('click', function() {
+      pencil.options.stroke_color = 'rgb(255,0,0)';
+    });
+
+    fn('color_black').addEvent('click', function() {
+      pencil.options.stroke_color = 'rgb(0,0,0)';
+    });
   
+    fn('color_listener').addEvent('click', function(e) {
+      pencil.options.stroke_color = e.target.id;
+      console.log('clicked')
+      console.log(e)
+      $('#current_color').css('background-color',e.target.id)
+    });
     
   })(document.id)
+
+  // original code written by https://codepen.io/abidibo/

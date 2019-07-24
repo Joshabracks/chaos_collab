@@ -44,7 +44,7 @@
         <div class="main">
             <!-- MAIN CONTENT-->
             <div class='wrapper'>
-                <div class="half top inline">
+                <div class=" top inline">
                     <div>
                         <h3 class="left indent30 push_top">Parent Collab</h3>
                         <div class="parentbox indent30">
@@ -55,28 +55,41 @@
                     <div>
 
                     </div>
-                </div>
-                <div class="half top inline">
-
-
-                </div>
+                    <!-- start color picker --><div id="color_listener">{% for i in colors %}<!--
+                --><div style="background-color:{{ i }}" class="color_picker top" id="{{ i }}"></div><!--              
+                -->{% endfor %}</div>
+<!-- end color picker -->
                 <!-- canvas -->
+                </div>
+
+
+
+
+                <div class="top inline">
                 <h1>Canvas pencil, undo, redo</h1>
                 <p>Click the pencil button and draw over the canvas. Use undo and redo buttons to navigate through
                     states.</p>
-                <div id="controllers center">
-                    <button class="controller" id="undo">undo</button>
-                    <button class="controller" id="redo">redo</button>
-                    <button class="controller" id="pencil">pencil</button>
-                </div>
-                <canvas width="1200" height="720" id="paint"></canvas>
-                <!-- end canvas -->
-            </div>
 
-        </div><!-- END MAIN CONTENT-->
+                <div class="half top inline">
+                    <div id="controllers center">
+                        <button class="controller" id="undo">undo</button>
+                        <button class="controller" id="redo">redo</button>
+                        <button class="controller" id="pencil">pencil</button>
+                        <button class="controller" id="color_red">RED</button>
+                        <button class="controller" id="color_black">BLACK</button>
+                        <div id="current_color"></div>
+                    </div>
+                    <canvas width="1200" height="720" id="paint"></canvas>
+                </div>
+                <!-- end canvas -->
+</div>
+            </div>
+        </div>
+
+    </div><!-- END MAIN CONTENT-->
 
     </div>
-    <script src="{% static 'main_app/js/canvas.js' %}" type="text/javascript"></script>
+    <script src="{% static 'main_app/js/canvas2.js' %}" type="text/javascript"></script>
 
 </body>
 

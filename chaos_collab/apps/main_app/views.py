@@ -43,5 +43,39 @@ def logout(request):
 def look(request):
     return render(request, 'main_app/now.html')
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 def canvas(request):
-    return render(request, 'main_app/canvas.html')
+    colors = chromatic(17)
+
+    context = {
+        'colors': colors,
+        'limit': get_limit(),
+    }
+    return render(request, 'main_app/canvas.html', context)
+
+def chromatic(divisor):
+    colors = []
+    for r in range(0, 255, divisor):
+        for g in range(0, 255, divisor):
+            for b in range(0, 255, divisor):
+                hue = 'rgb(' + str(r) + ',' + str(g) + ',' + str(b) + ')'
+                colors.append(hue)
+    return colors
+
+def get_limit():
+    arr = []
+    for i in range(225):
+        arr.append('Carl')
+    return arr

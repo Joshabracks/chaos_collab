@@ -6,7 +6,6 @@
     
 }
 
-
 /* content box types */
 .container{
     width: 100%;
@@ -206,7 +205,32 @@ a{
   }
   .controller {
     display: inline-block;
-    background: #eee;
+    background: goldenrod;
+    color: white;
     border: 1px solid #e7e7e7;
+    border-radius: 5px;
     padding: 5px;
+  }
+
+  .color_picker{
+      height: 25px;
+      width: 2px;
+      display: inline-block;
+      margin: 0px;
+      padding: 0px;
+      vertical-align: top;
+  }
+
+  #color_listener{
+      max-width: 450px;
+  }
+
+  .cl_row{
+      display: block;
+  }
+
+#current_color{
+      width: 50px;
+      height: 50px;
+      background-color: black;
   }
