@@ -4,7 +4,7 @@ from django.contrib import messages
 import bcrypt
 
 def index(request):
-    return render(request, 'main_app/index\.html')
+    return render(request, 'main_app/index.html')
 
 def register(request):
     errors = User.objects.validate_user(request.POST)
