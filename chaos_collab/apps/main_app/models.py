@@ -40,3 +40,12 @@ class User(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     objects = UserManager()
+    
+    
+    
+class Collab(models.Model):
+    title = models.CharField(max_length= 3, blank=False)
+    description =models.TextField(max_length=3, blank=False)
+    uploaded_by = models.ForeignKey(User, related_name = "uploaded_collabs”)
+    created_at = models.DateTimeField(auto_now_add = True)
+    updated_at = models.DateTimeField(auto_now = True)
