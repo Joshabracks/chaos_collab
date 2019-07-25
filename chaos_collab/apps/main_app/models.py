@@ -1,6 +1,7 @@
 from django.db import models
 from django.core.validators import validate_email
 import bcrypt
+from django.conf import settings
 
 # managers
 
@@ -44,14 +45,13 @@ class User(models.Model):
 class Collab(models.Model):
     title = models.CharField(max_length= 45, blank=False)
     description = models.TextField(max_length=45, blank=True)
-    uploaded_by = models.ForeignKey(User, related_name="uploaded_collabs")
-    encoded_image = models.TextField()
-    decoded_image = models.ImageField(upload_to = 'thumbs')
+    # uploaded_by = models.ForeignKey(User, related_name="uploaded_collabs")
+    encoded_img = models.TextField()
+    decoded_img = models.FileField(upload_to = 'thumbs/')
     created_at = models.DateTimeField(auto_now_add = True)
     updated_at = models.DateTimeField(auto_now = True)
 
 class Pkey(models.Model):
     parent = models.OneToOneField(Collab, related_name='child_key')
-    child = models.ForeignKey(Collab, related_name='parent_key')
     created_at = models.DateTimeField(auto_now_add = True)
     updated_at = models.DateTimeField(auto_now = True)

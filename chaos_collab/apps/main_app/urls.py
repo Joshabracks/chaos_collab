@@ -8,4 +8,6 @@ urlpatterns = [
     url(r'^login$', views.login),
     url(r'^look$', views.look),
     url(r'^canvas$', views.canvas),
+    url(r'^create_collab$', views.create_collab),
+
 ]

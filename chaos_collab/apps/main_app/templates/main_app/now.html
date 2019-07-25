@@ -50,25 +50,11 @@
 
             </div>
             <div>
+                
                 <h3 class="left indent30 push_top">User's Collabs</h3>
-                <div class="imagebox"></div>
-                <div class="imagebox"></div>
-                <div class="imagebox"></div>
-                <div class="imagebox"></div>
-                <div class="imagebox"></div>
-                <div class="imagebox"></div>
-                <div class="imagebox"></div>
-                <div class="imagebox"></div>
-                <div class="imagebox"></div>
-                <div class="imagebox"></div>
-                <div class="imagebox"></div>
-                <div class="imagebox"></div>
-                <div class="imagebox"></div>
-                <div class="imagebox"></div>
-                <div class="imagebox"></div>
-                <div class="imagebox"></div>
-                <div class="imagebox"></div>
-                <div class="imagebox"></div>
+                {% for collab in collabs reversed %}
+                <img src="{% static 'main_app/images/' %}{{ collab.decoded_img }}" class="imagebox">
+                {% endfor %}
             </div>
         </div><!-- END MAIN CONTENT-->
     </div>

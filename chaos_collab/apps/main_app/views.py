@@ -2,6 +2,13 @@ from django.shortcuts import render, redirect
 from apps.main_app.models import *
 from django.contrib import messages
 import bcrypt
+import base64
+from base64 import b64decode
+from django.core.files.base import ContentFile
+from django.conf import settings
+from django.shortcuts import render
+ 
+
 
 def index(request):
     return render(request, 'main_app/index.html')
@@ -41,7 +48,10 @@ def logout(request):
     return redirect('/')
 
 def look(request):
-    return render(request, 'main_app/now.html')
+    context = {
+        'collabs': Collab.objects.all()
+    }
+    return render(request, 'main_app/now.html', context)
 
 
 
@@ -156,3 +166,29 @@ def get_limit():
     for i in range(225):
         arr.append('Carl')
     return arr
+
+def create_collab(request):
+    
+    split_data = request.POST['encoded_img'].split('data:image/png;base64,')
+    print(split_data)
+    print('*'*50)
+    image_data = b64decode(split_data[1])
+    filename = f'{len(Collab.objects.all())}.png'
+    with open('apps/main_app/static/main_app/images/'+filename, 'wb') as f:
+        f.write(image_data)
+    Collab.objects.create(
+        title = 'Title',
+        description = 'Temporary description',
+        encoded_img = request.POST['encoded_img'],
+        decoded_img = filename,
+    )
+    return()
+
+
+
+
+
+
+    # format, imgstr = data.split(baseimagecode) 
+    # ext = format.split('/')[-1]
+    # data = ContentFile(base64.b64decode(imgstr), name='temp.' + ext)

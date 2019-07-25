@@ -57,7 +57,7 @@
                     <div class="parentbox">
                         <h3 class="gold">username</h3>
                     </div>
-
+                    
                     <div id="color_listener">
                         {% for i in colors %}<button style="background-color:{{ i }}" class="color_picker top"
                             id="{{ i }}"></button>{% endfor %}
@@ -72,6 +72,7 @@
    
                         <canvas width="1200" height="720" id="paint"></canvas>
                     </div>
+                    <button id="publish">Publish</button>
                 </div>
                 <!-- end canvas -->
 

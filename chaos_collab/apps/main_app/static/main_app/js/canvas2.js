@@ -131,10 +131,11 @@
     console.log(history.redo_list[0])
     $.ajax({
       type: "POST",
-      url: "/create_post",
+      url: "/create_collab",
       data: {
         "encoded_img": history.redo_list[0]
-      }
+      },
+      success: window.location.href = "/look"
     })
     history.redo(canvas, ctx)
   })
