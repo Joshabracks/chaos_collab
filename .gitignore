@@ -1,0 +1,6 @@
+__pycache__/
+.vscode
+venv/
+.DS_Store
+db.sqlite3
+python_nc/week3/day1_sports_orm/sports_orm/apps/leagues/fixtures/data.json

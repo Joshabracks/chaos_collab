@@ -123,7 +123,7 @@
     }
   });
 
-  $('#save-btn').on('click', function () {
+  $('#publish').on('click', function () {
     history.undo(canvas, ctx)
     console.log("FULL REDO LIST")
     console.log(history.redo_list)
