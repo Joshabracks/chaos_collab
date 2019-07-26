@@ -18,7 +18,7 @@
         <div class="header">
             <!-- title -->
             <div class="half inline top">
-                <h1 class="left">User Name</h1>
+                <h1 class="left"><a href="/">Chaos Collab</a></h1>
             </div>
             <!-- user box -->
             <div class="half inline top">
@@ -28,7 +28,7 @@
                 </div>
                 <!-- username -->
                 <div class="inline top right">
-                    <h4 class="right bottom gold">Username</h4>
+                    <h4 class="right bottom gold"><a href="/user/{{ user.id }}">{{ user.alias }}</a></h4>
                 </div>
             </div>
         </div> <!-- end header-->
@@ -44,31 +44,16 @@
                     <div class='avatar push_top inline indent top'></div>
                 </div>
                 <div class="half inline push_top top">
-                    <h4 class="center">User Info | Edit | Follow | Friend | Message</h4>
+                    <!-- <h4 class="center">User Info | Edit | Follow | Friend | Message</h4> -->
 
                 </div>
 
             </div>
             <div>
-                <h3 class="left indent30 push_top">User's Collabs</h3>
-                <div class="imagebox"></div>
-                <div class="imagebox"></div>
-                <div class="imagebox"></div>
-                <div class="imagebox"></div>
-                <div class="imagebox"></div>
-                <div class="imagebox"></div>
-                <div class="imagebox"></div>
-                <div class="imagebox"></div>
-                <div class="imagebox"></div>
-                <div class="imagebox"></div>
-                <div class="imagebox"></div>
-                <div class="imagebox"></div>
-                <div class="imagebox"></div>
-                <div class="imagebox"></div>
-                <div class="imagebox"></div>
-                <div class="imagebox"></div>
-                <div class="imagebox"></div>
-                <div class="imagebox"></div>
+                <h3 class="left indent30 push_top">{{ user_id.alias }}'s Collabs</h3>
+                {% for collab in user_id.collabs.all reversed %}
+                <a href="/collab/{{ collab.id }}"> <img src="{% static 'main_app/images/' %}{{ collab.decoded_img }}" class="imagebox"></a>
+                {% endfor %}
             </div>
         </div><!-- END MAIN CONTENT-->
     </div>

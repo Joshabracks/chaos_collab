@@ -7,9 +7,16 @@
 }
 
 /* content box types */
+
+body{
+    background-color: slategray;
+    color: white;
+}
 .container{
     width: 100%;
     display: block;
+    background-color: slategray;
+    color: white;
 }
 
 .userbox{
@@ -22,8 +29,8 @@
 }
 
 .header{
-    background-color: gray;
-    color: white;
+    background-color: white;
+    color: slategray;
     padding: 10px;
     display: block;
     width: 100%;
@@ -43,7 +50,8 @@
     display: block;
     width: 100%;
     text-align: center;
-    color: grey;
+    color: white;
+    background-color: slategray;
 }
 
 .main_draw{
@@ -81,26 +89,35 @@
 .imagebox{
     width: 200px;
     height: 120px;
-    background-color: grey;
+    background-color: white;
+    background-size: 200px 120px;
+    background-repeat: no-repeat;
     margin: 0px auto;
     display: inline-block;
     vertical-align: top;
     margin-left: 3%;
     margin-right: 3%;
     margin-top: 10px;
+    outline-style: solid;
+    outline-width: 1px;
+    outline-color: black;
+
 }
 .maincollab{
     width: 600px;
     height: 360px;
-    background-color: grey;
+    background-color: white;
     margin-top: 30px;
     color: white;
+    outline-style: solid;
+    outline-width: 1px;
+    outline-color: black;
 
 }
 .parentbox{
     width: 200px;
     height: 120px;
-    background-color: grey;
+    background-color: goldenrod;
 
 }
 

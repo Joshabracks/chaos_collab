@@ -133,7 +133,7 @@
       type: "POST",
       url: "/create_collab",
       data: {
-        "encoded_img": history.redo_list[0]
+        "encoded_img": history.redo_list[0],
       },
       success: window.location.href = "/landing"
     })
