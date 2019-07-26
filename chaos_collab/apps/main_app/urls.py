@@ -12,5 +12,6 @@ urlpatterns = [
     url(r'^landing$', views.landing),
     url(r'^collab/(?P<collab_id>\d+)$', views.view_collab),
     url(r'^canvas/(?P<collab_id>\d+)$', views.canvas),
+    url(r'^user/(?P<user_id>\d+)$', views.view_user),
 
 ]

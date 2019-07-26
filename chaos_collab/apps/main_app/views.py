@@ -67,6 +67,13 @@ def landing(request):
     }
     return render(request, 'main_app/landing.html', context)
 
+def view_user(request, user_id):
+    context = {
+        'user_id': User.objects.get(id = user_id),
+        'user': User.objects.get(id = request.session['user']),
+    }
+    return render(request, 'main_app/view_user.html', context)
+
 
 
 
