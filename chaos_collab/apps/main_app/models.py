@@ -50,9 +50,4 @@ class Collab(models.Model):
     decoded_img = models.CharField(max_length=255, blank=False)
     created_at = models.DateTimeField(auto_now_add = True)
     updated_at = models.DateTimeField(auto_now = True)
-
-class Pkey(models.Model):
-    parent = models.OneToOneField(Collab, related_name='child_key', blank=True)
-    child = models.ForeignKey(Collab, related_name='parent_key', blank=True)
-    created_at = models.DateTimeField(auto_now_add = True)
-    updated_at = models.DateTimeField(auto_now = True)
+    parent = models.CharField(max_length=45, blank=True)

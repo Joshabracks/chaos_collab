@@ -46,7 +46,12 @@
                     <h2 class='left indent'>Collaborated by <a href="/user/{{ collab.uploaded_by.id }}">{{ collab.uploaded_by.alias }}</a></h2>
                    <a href="/canvas/{{ collab.id }}"><h4 class='left gold indent'>Collaborate</h2></a>
                         <img class="maincollab" src="{% static 'main_app/images/' %}{{ collab.decoded_img }}">
+                        
             </div>
+            <div class="left">
+                <h4>Parent Collab by <a href="/user/{{ parent.uploaded_by.alias }}">{{ parent.uploaded_by.alias }}</a></h4>
+            <img class="imagebox" src="{% static 'main_app/images/' %}{{ parent.decoded_img }}">
+        </div>
         </div>
         <div class="half top inline">
             

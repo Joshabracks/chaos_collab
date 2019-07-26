@@ -145,16 +145,17 @@ def create_collab(request):
         uploaded_by = User.objects.get(id = request.session['user']),
         encoded_img = request.POST['encoded_img'],
         decoded_img = filename,
-        # parent_key = Pkey.objects.create(
-            # parent = Collab.objects.get(id = request.post['parent_id']))
+        parent = request.POST['parent_id'],
     )
     return()
 
 
 def view_collab(request, collab_id):
+    collab = Collab.objects.get(id = collab_id)
     context = {
         'collab': Collab.objects.get(id = collab_id),
         'user': User.objects.get(id = request.session['user']),
+        'parent': Collab.objects.get(id = collab.parent)
     }
     return render(request, 'main_app/view_collab.html', context)
 
