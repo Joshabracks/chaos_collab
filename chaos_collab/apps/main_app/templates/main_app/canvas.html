@@ -50,7 +50,9 @@
                         <div id="controllers center">
                                 <button class="controller" id="undo">◄</button>
                                 <button class="controller" id="redo">►</button>
-                                <button class="controller" id="pencil">pencil</button>
+                                <button class="controller" id="shrink">-</button>
+                                <button class="controller" id="grow">+</button>
+                                <span class="controller" id="brush_size">1</span>
                             </div>
                     </div>
 
@@ -117,7 +119,8 @@
 
   var pencil = {
     options: {
-      stroke_color: 'rgb(0,255,0)',
+      stroke_color: 'rgb(0,0,0)',
+      line_width: 1,
       dim: 200
     },
 
@@ -144,6 +147,7 @@
       this.ctx.moveTo(x, y);
       history.saveState(this.canvas);
       this.drawing = true;
+      this.ctx.lineWidth = this.options.line_width;
     },
     stroke: function (evt) {
       if (this.drawing) {
@@ -152,7 +156,7 @@
         this.ctx.lineTo(x, y);
         this.ctx.stroke();
         this.ctx.strokeStyle = this.options.stroke_color;
-
+        this.ctx.lineWidth = this.options.line_width;
       }
     },
     stop: function (evt) {
@@ -160,8 +164,21 @@
     }
   };
 
-  fn('pencil').addEvent('click', function () {
-    pencil.init(canvas, ctx);
+  // Initializes pencil on page load
+  pencil.init(canvas, ctx);
+
+  fn('shrink').addEvent('click', function () {
+    if (pencil.options.line_width > 1) {
+        pencil.options.line_width -= 1;
+    }
+    $("#brush_size").html(pencil.options.line_width.toString())
+  });
+
+  fn('grow').addEvent('click', function () {
+    if (pencil.options.line_width < 200) {
+        pencil.options.line_width += 1;
+    }
+    $("#brush_size").html(pencil.options.line_width.toString())
   });
 
   fn('undo').addEvent('click', function () {
@@ -176,6 +193,7 @@
 
   fn('color_listener').addEvent('click', function (e) {
     pencil.options.stroke_color = e.target.id;
+    pencil.init(canvas, ctx); // DEFAULT TOOL SET TO PENCIL WHEN SELECTING COLOR
     console.log('clicked')
     console.log(e)
     $('#current_color').css('background-color', e.target.id)
