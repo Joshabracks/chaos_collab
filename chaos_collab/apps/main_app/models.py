@@ -1,6 +1,7 @@
 from django.db import models
 from django.core.validators import validate_email
 import bcrypt
+from django.conf import settings
 
 # managers
 
@@ -8,10 +9,10 @@ class UserManager(models.Manager):
     def validate_user(self, postData):
         errors = {}
         # add keys and values to errors dictionary for each invalid field
-        if len(postData['fname']) < 2:
-            errors["fname"] = 'First name should be at least 2 characters'
-        if len(postData['lname']) < 2:
-            errors["lname"] = 'Last name should be at least 2 characters'
+        if len(postData['name']) < 2:
+            errors["name"] = 'Name should be at least 2 characters'
+        if len(postData['alias']) < 2:
+            errors["alias"] = 'Alias should be at least 2 characters'
         if len(postData['password']) < 8:
             errors['password'] = "Password name should be at least 8 characters"
         if (postData['password']) != (postData['cpassword']):
@@ -34,7 +35,7 @@ class UserManager(models.Manager):
 
 class User(models.Model):
     name = models.CharField(max_length=45)
-    screen_name = models.CharField(max_length=45)
+    alias = models.CharField(max_length=45)
     email = models.CharField(max_length=45)
     password = models.CharField(max_length=255)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -44,14 +45,14 @@ class User(models.Model):
 class Collab(models.Model):
     title = models.CharField(max_length= 45, blank=False)
     description = models.TextField(max_length=45, blank=True)
-    uploaded_by = models.ForeignKey(User, related_name="uploaded_collabs")
-    encoded_image = models.TextField()
-    decoded_image = models.ImageField(upload_to = 'thumbs')
+    uploaded_by = models.ForeignKey(User, related_name="collabs", blank=True)
+    encoded_img = models.TextField()
+    decoded_img = models.CharField(max_length=255, blank=False)
     created_at = models.DateTimeField(auto_now_add = True)
     updated_at = models.DateTimeField(auto_now = True)
 
 class Pkey(models.Model):
-    parent = models.OneToOneField(Collab, related_name='child_key')
-    child = models.ForeignKey(Collab, related_name='parent_key')
+    parent = models.OneToOneField(Collab, related_name='child_key', blank=True)
+    child = models.ForeignKey(Collab, related_name='parent_key', blank=True)
     created_at = models.DateTimeField(auto_now_add = True)
     updated_at = models.DateTimeField(auto_now = True)
