@@ -18,7 +18,7 @@
         <div class="header">
             <!-- title -->
             <div class="half inline top">
-                <h1 class="left">Name of Collab</h1>
+               <a href="/"><h1 class="left">Chaos Collab</h1></a>
             </div>
             <!-- user box -->
             <div class="half inline top">
@@ -28,7 +28,7 @@
                 </div>
                 <!-- username -->
                 <div class="inline top right">
-                    <h4 class="right bottom gold">Username</h4>
+                    <h4 class="right bottom gold">{{ user.alias }}</h4><a href="/logout">Logout</a>
                 </div>
             </div>
 
@@ -37,44 +37,23 @@
             <div class='wrapper'>
                 <div class="half top inline">
             <div>
-                    <h3 class="left indent30 push_top">Parent Collab</h3>
-                <div class="parentbox indent30"><h3 class="gold left indent">username</h3></div>
+
                 
             </div>
             <div>
-                <div class="maincollab indent30">
-                    <h2 class='left indent'>Name of Collab</h2>
-                    <h4 class='left gold indent'>Collaborate</h2>
-                </div>
+                
+                    <h2 class='left indent'>{{ collab.title }}</h2>
+                   <a href="/canvas/{{ collab.id }}"><h4 class='left gold indent'>Collaborate</h2></a>
+                        <img class="maincollab" src="{% static 'main_app/images/' %}{{ collab.decoded_img }}">
             </div>
         </div>
         <div class="half top inline">
-            <h1 class='left'>Comment Box Goes Here</h1>
             
         </div>
 
         </div>
             <div>
-                    <h3 class="left indent30 push_top">Child Collabs</h3>
-                <div class="imagebox"></div>
-                <div class="imagebox"></div>
-                <div class="imagebox"></div>
-                <div class="imagebox"></div>
-                <div class="imagebox"></div>
-                <div class="imagebox"></div>
-                <div class="imagebox"></div>
-                <div class="imagebox"></div>
-                <div class="imagebox"></div>
-                <div class="imagebox"></div>
-                <div class="imagebox"></div>
-                <div class="imagebox"></div>
-                <div class="imagebox"></div>
-                <div class="imagebox"></div>
-                <div class="imagebox"></div>
-                <div class="imagebox"></div>
-                <div class="imagebox"></div>
-                <div class="imagebox"></div>
-                <div class="imagebox"></div>
+              
             </div>
         </div><!-- END MAIN CONTENT-->
     </div>

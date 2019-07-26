@@ -135,10 +135,24 @@
       data: {
         "encoded_img": history.redo_list[0]
       },
-      success: window.location.href = "/look"
+      success: window.location.href = "/landing"
     })
     history.redo(canvas, ctx)
   })
+
+  // fn($(document).ready(function(){
+  //   console.log("inside ajax call")
+  //   $.ajax({
+  //     url: "/populate_collab",
+  //     success: function(data) {
+  //       console.log("success")
+  //       console.log(data)
+  //       history.redo_list.push(data)
+  //       history.redo()
+  //     }
+    
+  // })
+
 
 })(document.id)
 

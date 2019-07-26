@@ -11,7 +11,13 @@ from django.shortcuts import render
 
 
 def index(request):
-    return render(request, 'main_app/index.html')
+    try:
+        user = User.objects.filter(id = request.session['user'])
+    except:
+        user = 'no_user'
+    if user == 'no_user':
+        return render(request, 'main_app/index.html')
+    return redirect('/landing')
 
 def register(request):
     errors = User.objects.validate_user(request.POST)
@@ -23,7 +29,7 @@ def register(request):
     hash1 = bcrypt.hashpw(info['password'].encode(), bcrypt.gensalt())
     new_user = User.objects.create(
         name = info['name'],
-        screen_name = info['screen_name'],
+        alias = info['alias'],
         email = info['email'],
         password = hash1,
         )
@@ -31,7 +37,7 @@ def register(request):
     context = {
         'user': new_user,
     }
-    return render(request, 'main_app/main.html', context)
+    return redirect('/')
 
 def login(request):
     errors = User.objects.validate_login(request.POST)
@@ -49,10 +55,17 @@ def logout(request):
 
 def look(request):
     context = {
-        'collabs': Collab.objects.all()
+        'collabs': Collab.objects.all(),
+        'user': User.objects.get(id = request.session['user'])
     }
     return render(request, 'main_app/now.html', context)
 
+def landing(request):
+    context = {
+        'collabs': Collab.objects.all(),
+        'user': User.objects.get(id = request.session['user'])
+    }
+    return render(request, 'main_app/landing.html', context)
 
 
 
@@ -61,28 +74,26 @@ def look(request):
 
 
 
-
-
-
-
-
-def canvas(request):
+def canvas(request, collab_id):
+    request.session['collab'] = 'no_collab'
+    request.session['collab'] = collab_id
     colors = chromatic(51)
-
     color_strs = []
-     
-
-
-
     context = {
         'colors': colors,
         'color_str': " ".join(colors),
         'limit': get_limit(),
+        'image_state': Collab.objects.get(id = collab_id).encoded_img,
+        'collab': Collab.objects.get(id = collab_id),
+        'user': User.objects.get(id = request.session['user'])
     }
     return render(request, 'main_app/canvas.html', context)
 
-def chromatic(divisor):
 
+
+
+
+def chromatic(divisor):
     grays = []
     bluegreens = []
     blues = []
@@ -94,7 +105,6 @@ def chromatic(divisor):
     greens = []
     greenblues = []
     colors = []
-
     for r in range(0, 256, divisor):
         for g in range(0, 256, divisor):
             for b in range(0, 256, divisor):
@@ -105,61 +115,7 @@ def chromatic(divisor):
                     colors.append(hue)
     for i in grays:
         colors.append(i)
-                # elif ((b == r) and (b > g)) or ((b == g) and (b > r)):
-                #     if r == g:
-                #         blues.append(hue)
-                #     if r > g:
-                #         bluereds.append(hue)
-                #     else:
-                #         bluegreens.append(hue)
-                    
-                # elif ((r == b) and (r > g)) or ((r == g) and (r > b)):
-                #     if b == g:
-                #         reds.append(hue)
-                #     if b > g:
-                #         redblues.append(hue)
-                #     else:
-                #         redgreens.append(hue)
-                # else:
-                #     if r == b:
-                #         greens.append(hue)
-                #     if r > b:
-                #         greenreds.append(hue)
-                #     else:
-                #         greenblues.append(hue)  
-
-    
-    # for i in grays:
-    #     colors.append(i)
-    # for i in greens:
-    #     colors.append(i)
-    # for i in greenblues:
-    #     colors.append(i)
-    # for i in bluegreens:
-    #     colors.append(i)
-    # for i in blues:
-    #     colors.append(i)   
-    # for i in bluereds:
-    #     colors.append(i)
-    # for i in redblues:
-    #     colors.append(i)
-    # for i in reds:
-    #     colors.append(i)
-    # for i in redgreens:
-    #     colors.append(i)
-    # for i in greenreds:
-    #     colors.append(i)
-
     return colors
-
-    # def chromatic(divisor):
-    # colors = []
-    # for r in range(0, 255, divisor):
-    #     for g in range(0, 255, divisor):
-    #         for b in range(0, 255, divisor):
-    #             hue = 'rgb(' + str(r) + ',' + str(g) + ',' + str(b) + ')'
-    #             colors.append(hue)
-    # return colors
 
 def get_limit():
     arr = []
@@ -173,17 +129,27 @@ def create_collab(request):
     print(split_data)
     print('*'*50)
     image_data = b64decode(split_data[1])
-    filename = f'{len(Collab.objects.all())}.png'
+    filename = f'{len(Collab.objects.all())+1}.png'
     with open('apps/main_app/static/main_app/images/'+filename, 'wb') as f:
         f.write(image_data)
     Collab.objects.create(
         title = 'Title',
         description = 'Temporary description',
+        uploaded_by = User.objects.get(id = request.session['user']),
         encoded_img = request.POST['encoded_img'],
         decoded_img = filename,
+        # parent_key = Pkey.objects.create(
+            # parent = Collab.objects.get(id = request.post['parent_id']))
     )
     return()
 
+
+def view_collab(request, collab_id):
+    context = {
+        'collab': Collab.objects.get(id = collab_id),
+        'user': User.objects.get(id = request.session['user']),
+    }
+    return render(request, 'main_app/view_collab.html', context)
 
 
 
