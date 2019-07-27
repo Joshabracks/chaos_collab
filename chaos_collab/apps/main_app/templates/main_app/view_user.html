@@ -24,11 +24,11 @@
             <div class="half inline top">
                 <!-- avatar -->
                 <div class="inline top">
-                    <div class="avatar"></div>
+                    <div class="avatar" style="background-image: url({% static 'main_app/images/' %}{{ user.avatar }}.png);"></div>
                 </div>
                 <!-- username -->
                 <div class="inline top right">
-                    <h4 class="right bottom gold"><a href="/user/{{ user.id }}">{{ user.alias }}</a></h4>
+                    <h4 class="right bottom gold"><a href="/user/{{ user.id }}">{{ user.alias }}</a></h4><a href="/logout">Logout</a>
                 </div>
             </div>
         </div> <!-- end header-->

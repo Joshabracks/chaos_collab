@@ -7,7 +7,6 @@ from base64 import b64decode
 from django.core.files.base import ContentFile
 from django.conf import settings
 from django.shortcuts import render
- 
 
 
 def index(request):
@@ -74,10 +73,13 @@ def view_user(request, user_id):
     }
     return render(request, 'main_app/view_user.html', context)
 
-
-
-
-
+def post_comment(request):
+    Comment.objects.create(
+        content = request.POST['content'],
+        collab = Collab.objects.get(id = request.POST['collab']),
+        user = User.objects.get(id = request.session['user'])
+    )
+    return redirect(f"/collab/{request.POST['collab']}")
 
 
 
@@ -155,11 +157,17 @@ def view_collab(request, collab_id):
     context = {
         'collab': Collab.objects.get(id = collab_id),
         'user': User.objects.get(id = request.session['user']),
-        'parent': Collab.objects.get(id = collab.parent)
+        'parent': Collab.objects.get(id = collab.parent),
+        'children': Collab.objects.filter(parent = collab_id),
+        'comments': Comment.objects.filter(collab = collab_id),
     }
     return render(request, 'main_app/view_collab.html', context)
 
-
+def set_avatar(request, collab_id, user_id):
+    user = User.objects.get(id = user_id)
+    user.avatar = collab_id
+    user.save()
+    return redirect('/landing')
 
 
 

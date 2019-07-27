@@ -38,6 +38,7 @@ class User(models.Model):
     alias = models.CharField(max_length=45)
     email = models.CharField(max_length=45)
     password = models.CharField(max_length=255)
+    avatar = models.CharField(max_length=45, default="1")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     objects = UserManager()
@@ -51,3 +52,10 @@ class Collab(models.Model):
     created_at = models.DateTimeField(auto_now_add = True)
     updated_at = models.DateTimeField(auto_now = True)
     parent = models.CharField(max_length=45, blank=True)
+
+class Comment(models.Model):
+    content = models.TextField()
+    collab = models.ForeignKey(Collab, related_name="comment")
+    user = models.ForeignKey(User, related_name="comment")
+    created_at = models.DateTimeField(auto_now_add = True)
+    updated_at = models.DateTimeField(auto_now = True)

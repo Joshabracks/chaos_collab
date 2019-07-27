@@ -24,7 +24,7 @@
             <div class="half inline top">
                 <!-- avatar -->
                 <div class="inline top">
-                    <div class="avatar"></div>
+                    <div class="avatar" style="background-image: url({% static 'main_app/images/' %}{{ user.avatar }}.png);"></div>
                 </div>
                 <!-- username -->
                 <div class="inline top right">
@@ -35,14 +35,6 @@
         </div> <!-- end header-->
         <div class="main"> <!-- MAIN CONTENT-->
             <div wrapper>
-                    <h3 class="left indent30 push_top">Newest Collabs</h3>
-                {% for collab in collabs reversed %}
-                {% if forloop.counter < 5 %}
-               <a href="/collab/{{ collab.id }}"> <img src="{% static 'main_app/images/' %}{{ collab.decoded_img }}" class="imagebox"></a>
-                {% endif %}
-                {% endfor %}
-            </div>
-            <div wrapper>
                     <h3 class="left indent30 push_top">My Collabs</h3>
                     {% for collab in user.collabs.all reversed %}
                     {% if forloop.counter < 5 %}
@@ -50,6 +42,16 @@
                     {% endif %}
                     {% endfor %}
             </div>
+            <div wrapper>
+                    <h3 class="left indent30 push_top">Newest Collabs</h3>
+                {% for collab in collabs reversed %}
+                {% if forloop.counter < 16 %}
+                
+               <a href="/collab/{{ collab.id }}"> <img src="{% static 'main_app/images/' %}{{ collab.decoded_img }}" class="imagebox"></a>
+               {% endif %}
+                {% endfor %}
+            </div>
+            
         </div><!-- END MAIN CONTENT-->
     </div>
 </body>

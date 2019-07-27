@@ -8,7 +8,7 @@
     <title>Chaos Collab</title>
 
 
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js" charset="UTF-8"></script><script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/d3js/5.9.0/d3.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/mootools/1.4.5/mootools-yui-compressed.js"></script>
@@ -33,11 +33,11 @@
             <div class="half inline top">
                 <!-- avatar -->
                 <div class="inline top">
-                    <div class="avatar"></div>
+                    <div class="avatar" style="background-image: url({% static 'main_app/images/' %}{{ user.avatar }}.png);"></div>
                 </div>
                 <!-- username -->
                 <div class="inline top right">
-                    <h4 class="right bottom gold">{{ user.alias }}</h4><a href="/logout">Logout</a>
+                        <h4 class="right bottom gold"><a href="/user/{{ user.id }}">{{ user.alias }}</a></h4><a href="/logout">Logout</a>
                 </div>
             </div>
             <div class="main_draw center">
@@ -50,7 +50,9 @@
                         <div id="controllers center">
                                 <button class="controller" id="undo">◄</button>
                                 <button class="controller" id="redo">►</button>
-                                <button class="controller" id="pencil">pencil</button>
+                                <button class="controller" id="shrink">-</button>
+                                <button class="controller" id="grow">+</button>
+                                <span class="controller" id="brush_size">1</span>
                             </div>
                     </div>
 
@@ -117,7 +119,8 @@
 
   var pencil = {
     options: {
-      stroke_color: 'rgb(0,255,0)',
+      stroke_color: 'rgb(0,0,0)',
+      line_width: 1,
       dim: 200
     },
 
@@ -144,6 +147,7 @@
       this.ctx.moveTo(x, y);
       history.saveState(this.canvas);
       this.drawing = true;
+      this.ctx.lineWidth = this.options.line_width;
     },
     stroke: function (evt) {
       if (this.drawing) {
@@ -152,7 +156,7 @@
         this.ctx.lineTo(x, y);
         this.ctx.stroke();
         this.ctx.strokeStyle = this.options.stroke_color;
-
+        this.ctx.lineWidth = this.options.line_width;
       }
     },
     stop: function (evt) {
@@ -160,8 +164,21 @@
     }
   };
 
-  fn('pencil').addEvent('click', function () {
-    pencil.init(canvas, ctx);
+  // Initializes pencil on page load
+  pencil.init(canvas, ctx);
+
+  fn('shrink').addEvent('click', function () {
+    if (pencil.options.line_width > 1) {
+        pencil.options.line_width -= 1;
+    }
+    $("#brush_size").html(pencil.options.line_width.toString())
+  });
+
+  fn('grow').addEvent('click', function () {
+    if (pencil.options.line_width < 200) {
+        pencil.options.line_width += 1;
+    }
+    $("#brush_size").html(pencil.options.line_width.toString())
   });
 
   fn('undo').addEvent('click', function () {
@@ -176,6 +193,7 @@
 
   fn('color_listener').addEvent('click', function (e) {
     pencil.options.stroke_color = e.target.id;
+    pencil.init(canvas, ctx); // DEFAULT TOOL SET TO PENCIL WHEN SELECTING COLOR
     console.log('clicked')
     console.log(e)
     $('#current_color').css('background-color', e.target.id)

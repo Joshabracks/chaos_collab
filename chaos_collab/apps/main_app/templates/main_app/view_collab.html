@@ -18,48 +18,87 @@
         <div class="header">
             <!-- title -->
             <div class="half inline top">
-               <a href="/"><h1 class="left">Chaos Collab</h1></a>
+                <a href="/">
+                    <h1 class="left">Chaos Collab</h1>
+                </a>
             </div>
             <!-- user box -->
             <div class="half inline top">
                 <!-- avatar -->
                 <div class="inline top">
-                    <div class="avatar"></div>
+                    <div class="avatar" style="background-image: url({% static 'main_app/images/' %}{{ user.avatar }}.png);"></div>
                 </div>
                 <!-- username -->
                 <div class="inline top right">
-                    <h4 class="right bottom gold"><a href="/user/{{ user.id }}">{{ user.alias }}</a></h4><a href="/logout">Logout</a>
+                    <h4 class="right bottom gold"><a href="/user/{{ user.id }}">{{ user.alias }}</a></h4><a
+                        href="/logout">Logout</a>
                 </div>
             </div>
 
         </div> <!-- end header-->
-        <div class="main"> <!-- MAIN CONTENT-->
+        <div class="main">
+            <!-- MAIN CONTENT-->
             <div class='wrapper'>
                 <div class="half top inline">
-            <div>
+                    <div>
 
-                
+
+                    </div>
+                    <div>
+
+                        <h2 class='left indent'>{{ collab.title }}</h2>
+                        <h2 class='left indent'>Collaborated by <a
+                                href="/user/{{ collab.uploaded_by.id }}">{{ collab.uploaded_by.alias }}</a></h2>
+                        <a href="/canvas/{{ collab.id }}">
+                            <h4 class='left gold indent'>Collaborate</a> | <a href="/set_avatar/{{ collab.id }}/{{ user.id }}">Make Avatar</a></h4>
+                        
+                        <img class="maincollab" src="{% static 'main_app/images/' %}{{ collab.decoded_img }}">
+
+                    </div>
+                    <div class="left">
+                        <h4>Parent Collab by <a
+                                href="/user/{{ parent.uploaded_by.alias }}">{{ parent.uploaded_by.alias }}</a></h4>
+                        <a href="/collab/{{ parent.id }}"><img class="imagebox"
+                                src="{% static 'main_app/images/' %}{{ parent.decoded_img }}"></a>
+
+                    </div>
+
+                </div>
+                <div class="half top inline">
+                    <div class="left scroll">
+                        <h4 class="push_top">Children of this Collab</h4>
+                        {% for child in children %}
+                        <a href="/collab/{{ child.id }}"><img class="imagebox"
+                                src="{% static 'main_app/images/' %}{{ child.decoded_img }}"></a>
+                        {% endfor %}
+                    </div>
+
+
+                </div>
+
             </div>
             <div>
-                
-                    <h2 class='left indent'>{{ collab.title }}</h2>
-                    <h2 class='left indent'>Collaborated by <a href="/user/{{ collab.uploaded_by.id }}">{{ collab.uploaded_by.alias }}</a></h2>
-                   <a href="/canvas/{{ collab.id }}"><h4 class='left gold indent'>Collaborate</h2></a>
-                        <img class="maincollab" src="{% static 'main_app/images/' %}{{ collab.decoded_img }}">
-                        
+<h3 class="indent left push_top">Comments</h3>
+<hr>
+                <div class="indent">
+                {% for comment in comments %}
+            <h4 class="left"><a href="/user/{{ comment.user.id }}">{{ comment.user.alias }}</h4></a>
+                <p class="left indent">{{ comment.content }}</p>
+                {% endfor %}
             </div>
             <div class="left">
-                <h4>Parent Collab by <a href="/user/{{ parent.uploaded_by.alias }}">{{ parent.uploaded_by.alias }}</a></h4>
-            <img class="imagebox" src="{% static 'main_app/images/' %}{{ parent.decoded_img }}">
-        </div>
-        </div>
-        <div class="half top inline">
-            
-        </div>
+                    <hr class="push_top">
+                    <h3 class="indent">Post a new comment</h3>
+                    <form action="/post_comment" method="post">
+                        {% csrf_token %}
+                        
+                        <p class="indent"><textarea name="content" class="half left comment_box" rows="5"></textarea></p>
+                        <input type="hidden" name="collab" value="{{ collab.id }}">
+                        <p class="indent"><input type="submit" value="Comment" class="left indent"></p>
+                    </form>
+                    <hr class="push_top">
+                </div>
 
-        </div>
-            <div>
-              
             </div>
         </div><!-- END MAIN CONTENT-->
     </div>
