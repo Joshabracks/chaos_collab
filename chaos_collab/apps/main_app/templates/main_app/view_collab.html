@@ -14,28 +14,24 @@
 
 <body>
     <div class="container">
-        <!-- header -->
-        <div class="header">
-            <!-- title -->
-            <div class="half inline top">
-                <a href="/">
-                    <h1 class="left">Chaos Collab</h1>
-                </a>
-            </div>
-            <!-- user box -->
-            <div class="half inline top">
-                <!-- avatar -->
-                <div class="inline top">
-                    <div class="avatar" style="background-image: url({% static 'main_app/images/' %}{{ user.avatar }}.png);"></div>
+         <!-- header -->
+         <div class="header">
+                <!-- title -->
+                <div class="inline half top logo">
+                    <a href="/"><h1 class="left">Chaos Collab</h1></a>
                 </div>
-                <!-- username -->
-                <div class="inline top right">
-                    <h4 class="right bottom gold"><a href="/user/{{ user.id }}">{{ user.alias }}</a></h4><a
-                        href="/logout">Logout</a>
+                <!-- user box -->
+                <div class="inline half top right">
+                    <!-- avatar -->
+                   
+                        <div class="avatar" style="background-image: url({% static 'main_app/images/' %}{{ user.avatar }}.png);"></div>
+                    <!-- username -->
+                        <div class="user">
+                        <h4><a href="user/{{ user.id }}">{{ user.alias }}</a></h4><a href="/logout">Logout</a>
+                    </div>
                 </div>
-            </div>
-
-        </div> <!-- end header-->
+    
+            </div> <!-- end header-->
         <div class="main">
             <!-- MAIN CONTENT-->
             <div class='wrapper'>
@@ -57,7 +53,7 @@
                     </div>
                     <div class="left">
                         <h4>Parent Collab by <a
-                                href="/user/{{ parent.uploaded_by.alias }}">{{ parent.uploaded_by.alias }}</a></h4>
+                                href="/user/{{ parent.uploaded_by.id }}">{{ parent.uploaded_by.alias }}</a></h4>
                         <a href="/collab/{{ parent.id }}"><img class="imagebox"
                                 src="{% static 'main_app/images/' %}{{ parent.decoded_img }}"></a>
 
@@ -65,7 +61,7 @@
 
                 </div>
                 <div class="half top inline">
-                    <div class="left scroll">
+                    <div class="left children">
                         <h4 class="push_top">Children of this Collab</h4>
                         {% for child in children %}
                         <a href="/collab/{{ child.id }}"><img class="imagebox"

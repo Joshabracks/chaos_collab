@@ -5,25 +5,18 @@
     box-sizing: border-box;
     
 }
-hr{
-    border: 1px solid rgb(83, 101, 192);
-}
-
-.sepline{
-    background-color: #0ABDC6;
-}
 
 /* content box types */
 
 body{
-    background-color: rgb(204, 204, 204);
-    color: #0ABDC6;
+    background-color: slategray;
+    color: white;
 }
 .container{
     width: 100%;
     display: block;
-    background-color: #2E3973;
-    color: #0ABDC6;
+    background-color: slategray;
+    color: white;
 }
 
 .userbox{
@@ -32,98 +25,36 @@ body{
     top: 20px;
     width: 150px;
     height: 150px;
+    background: red;
 }
 
 .header{
-    background-color: rgb(30, 30, 75);
-    color: #2E3973;
-    /* padding: 10px; */
+    background-color: white;
+    color: slategray;
+    padding: 10px;
     display: block;
     width: 100%;
     text-align: center;
     height: 50px;
-    min-width: 401px;
-    border-bottom-color: #0ABDC6;
-    border-bottom-width: 1px;
-    border-bottom-style: solid;
-
-}
-
-.logo{
-    position: absolute;
-    left: 10px;
-    top: 5px;
-}
-.stick200{
-    min-width: 150px;
-}
-.topbar{
-    height: 10px;
-    width: 100%;
-    background-color: white;
-}
-
-.user{
-    position: absolute;
-    right: 75px;
 
 }
 
 .avatar{
-    position: absolute;
-    right: 5px;
-    top: 5px;
-    height: 30px;
-    width: 50px;
+    height: 75px;
+    width: 75px;
     background-color: white;
-    border-radius: 5px;
-    background-size: 50px 30px;
+    border-radius: 50px;
+    background-size: 100px 60px;
     background-position: center;
     background-repeat: no-repeat;
-    text-shadow:
-    -1px -1px 0 #711C91,
-    1px -1px 0 #711C91,
-    -1px 1px 0 #711C91,
-    1px 1px 0 #711C91;
-}
-.avatarbig{
-    height: 90px;
-    width: 150px;
-    background-color: white;
-    border-radius: 5px;
-    background-size: 150px 90px;
-    background-position: center;
-    background-repeat: no-repeat;
-    text-shadow:
-    -1px -1px 0 #711C91,
-    1px -1px 0 #711C91,
-    -1px 1px 0 #711C91,
-    1px 1px 0 #711C91;
-    text-align: center;
-    color: white;
-    font-size: 20px;
-    -webkit-box-shadow: 0 12px 6px -3px rgba(0, 0, 0, 0.623);
-       -moz-box-shadow: 0 12px 6px -3px rgba(0, 0, 0, 0.623);
-       box-shadow: 0 12px 6px -3px rgba(0, 0, 0, 0.623);
 }
 
 .main{
     display: block;
     width: 100%;
     text-align: center;
-    color: #0ABDC6;
-    background-color: #2E3973;
-    position: absolute;
-    top: 50px;
-    left: 0px;
-    right: 0px;
-    bottom: 0px;
-    overflow-y: scroll;
-    overflow-x: auto;
-    box-shadow: inset 0 20px 20px -7px rgba(0, 0, 0, 0.678);
-    /* -moz-box-shadow:    inset 0 0 10px #000000;
-    -webkit-box-shadow: inset 0 0 10px #000000;
-    box-shadow:  inset 0 0 10px #000000; */
+    color: white;
+    background-color: slategray;
 }
 
 .main_draw{
@@ -136,7 +67,7 @@ body{
 
 .info{
     display: inline-block;
-    background: #0ABDC6;
+    background: white;
     color: black;
     border-radius: 20px;
     box-shadow: 5px 5px grey;
@@ -170,11 +101,9 @@ body{
     margin-left: 3%;
     margin-right: 3%;
     margin-top: 10px;
-    border-radius: 5px;
-    -webkit-box-shadow: 0 12px 6px -3px rgba(0, 0, 0, 0.623);
-       -moz-box-shadow: 0 12px 6px -3px rgba(0, 0, 0, 0.623);
-       box-shadow: 0 12px 6px -3px rgba(0, 0, 0, 0.623);
-
+    outline-style: solid;
+    outline-width: 1px;
+    outline-color: black;
 
 }
 .maincollab{
@@ -183,17 +112,16 @@ body{
     height: auto;
     background-color: white;
     margin-top: 30px;
-    color: #0ABDC6;
-    
-    border-radius: 15px;
-    -webkit-box-shadow: 0 12px 6px -3px rgba(0, 0, 0, 0.623);
-       -moz-box-shadow: 0 12px 6px -3px rgba(0, 0, 0, 0.623);
-       box-shadow: 0 12px 6px -3px rgba(0, 0, 0, 0.623);
+    color: white;
+    outline-style: solid;
+    outline-width: 1px;
+    outline-color: black;
+
 }
 .parentbox{
     width: 200px;
     height: 120px;
-    background-color: white;
+    background-color: goldenrod;
 
 }
 
@@ -259,7 +187,7 @@ body{
 /* extra styling */
 
 a{
-    color: white;
+    color: goldenrod;
 }
 
 .indent{
@@ -275,19 +203,10 @@ a{
 /* colors */
 
 .gold{
-    color: #EA00D9;
+    color: goldenrod;
 }
 
 .scroll{
-    overflow-y: scroll;
-}
-
-.children{
-    direction: rtl;
-    min-height: 500px;
-    min-width: 250px;
-    margin: 20px;
-    text-align: center;
     overflow-y: scroll;
 }
 
@@ -309,7 +228,7 @@ a{
 #controllers {
     width: 600px;
     font-size: 0.8em;
-    color: #2E3973;
+    color: #333;
   }
   #paint {
     border: 1px solid #000;
@@ -317,8 +236,8 @@ a{
   }
   .controller {
     display: inline-block;
-    background: #EA00D9;
-    color: #0ABDC6;
+    background: goldenrod;
+    color: white;
     border: 1px solid #e7e7e7;
     border-radius: 5px;
     padding: 5px;
@@ -355,32 +274,7 @@ a{
     max-width: 200px;
 }
 
-
-
-.headleft{
-    height: 75px;
+.cctext{
+    color: white;
+    text-shadow: 2px 2px black;
 }
-
-/* width */
-::-webkit-scrollbar {
-    width: 10px;
-    
-  }
-  
-  /* Track */
-  ::-webkit-scrollbar-track {
-    background: rgb(66, 79, 145); 
-    
-  }
-  
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: rgb(102, 116, 189); 
-    border-radius: 5px;
-    
-  }
-  
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: rgb(102, 116, 189); 
-  }

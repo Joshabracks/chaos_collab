@@ -5,24 +5,17 @@
     box-sizing: border-box;
     
 }
-hr{
-    border: 1px solid rgb(83, 101, 192);
-}
-
-.sepline{
-    background-color: #0ABDC6;
-}
 
 /* content box types */
 
 body{
-    background-color: rgb(204, 204, 204);
+    background-color: #091833;
     color: #0ABDC6;
 }
 .container{
     width: 100%;
     display: block;
-    background-color: #2E3973;
+    background-color: #091833;
     color: #0ABDC6;
 }
 
@@ -35,49 +28,22 @@ body{
 }
 
 .header{
-    background-color: rgb(30, 30, 75);
-    color: #2E3973;
-    /* padding: 10px; */
+    background-color: #0ABDC6;
+    color: #091833;
+    padding: 10px;
     display: block;
     width: 100%;
     text-align: center;
     height: 50px;
-    min-width: 401px;
-    border-bottom-color: #0ABDC6;
-    border-bottom-width: 1px;
-    border-bottom-style: solid;
-
-}
-
-.logo{
-    position: absolute;
-    left: 10px;
-    top: 5px;
-}
-.stick200{
-    min-width: 150px;
-}
-.topbar{
-    height: 10px;
-    width: 100%;
-    background-color: white;
-}
-
-.user{
-    position: absolute;
-    right: 75px;
 
 }
 
 .avatar{
-    position: absolute;
-    right: 5px;
-    top: 5px;
     height: 30px;
     width: 50px;
     background-color: white;
     border-radius: 5px;
-    background-size: 50px 30px;
+    background-size: 30px 50px;
     background-position: center;
     background-repeat: no-repeat;
     text-shadow:
@@ -85,26 +51,6 @@ body{
     1px -1px 0 #711C91,
     -1px 1px 0 #711C91,
     1px 1px 0 #711C91;
-}
-.avatarbig{
-    height: 90px;
-    width: 150px;
-    background-color: white;
-    border-radius: 5px;
-    background-size: 150px 90px;
-    background-position: center;
-    background-repeat: no-repeat;
-    text-shadow:
-    -1px -1px 0 #711C91,
-    1px -1px 0 #711C91,
-    -1px 1px 0 #711C91,
-    1px 1px 0 #711C91;
-    text-align: center;
-    color: white;
-    font-size: 20px;
-    -webkit-box-shadow: 0 12px 6px -3px rgba(0, 0, 0, 0.623);
-       -moz-box-shadow: 0 12px 6px -3px rgba(0, 0, 0, 0.623);
-       box-shadow: 0 12px 6px -3px rgba(0, 0, 0, 0.623);
 }
 
 .main{
@@ -112,18 +58,7 @@ body{
     width: 100%;
     text-align: center;
     color: #0ABDC6;
-    background-color: #2E3973;
-    position: absolute;
-    top: 50px;
-    left: 0px;
-    right: 0px;
-    bottom: 0px;
-    overflow-y: scroll;
-    overflow-x: auto;
-    box-shadow: inset 0 20px 20px -7px rgba(0, 0, 0, 0.678);
-    /* -moz-box-shadow:    inset 0 0 10px #000000;
-    -webkit-box-shadow: inset 0 0 10px #000000;
-    box-shadow:  inset 0 0 10px #000000; */
+    background-color: #091833;
 }
 
 .main_draw{
@@ -170,10 +105,8 @@ body{
     margin-left: 3%;
     margin-right: 3%;
     margin-top: 10px;
+    box-shadow: 0 0 0 2px #0ABDC6;
     border-radius: 5px;
-    -webkit-box-shadow: 0 12px 6px -3px rgba(0, 0, 0, 0.623);
-       -moz-box-shadow: 0 12px 6px -3px rgba(0, 0, 0, 0.623);
-       box-shadow: 0 12px 6px -3px rgba(0, 0, 0, 0.623);
 
 
 }
@@ -184,11 +117,8 @@ body{
     background-color: white;
     margin-top: 30px;
     color: #0ABDC6;
-    
+    box-shadow: 0 0 0 2px #0ABDC6;
     border-radius: 15px;
-    -webkit-box-shadow: 0 12px 6px -3px rgba(0, 0, 0, 0.623);
-       -moz-box-shadow: 0 12px 6px -3px rgba(0, 0, 0, 0.623);
-       box-shadow: 0 12px 6px -3px rgba(0, 0, 0, 0.623);
 }
 .parentbox{
     width: 200px;
@@ -282,15 +212,6 @@ a{
     overflow-y: scroll;
 }
 
-.children{
-    direction: rtl;
-    min-height: 500px;
-    min-width: 250px;
-    margin: 20px;
-    text-align: center;
-    overflow-y: scroll;
-}
-
 .italic{
     font-style: italic;
 }
@@ -309,7 +230,7 @@ a{
 #controllers {
     width: 600px;
     font-size: 0.8em;
-    color: #2E3973;
+    color: #091833;
   }
   #paint {
     border: 1px solid #000;
@@ -355,32 +276,8 @@ a{
     max-width: 200px;
 }
 
-
-
-.headleft{
-    height: 75px;
+.cctext{
+    color: #0ABDC6;
+    text-shadow: 2px 2px black;
 }
 
-/* width */
-::-webkit-scrollbar {
-    width: 10px;
-    
-  }
-  
-  /* Track */
-  ::-webkit-scrollbar-track {
-    background: rgb(66, 79, 145); 
-    
-  }
-  
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: rgb(102, 116, 189); 
-    border-radius: 5px;
-    
-  }
-  
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: rgb(102, 116, 189); 
-  }

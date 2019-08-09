@@ -17,22 +17,23 @@
         <!-- header -->
         <div class="header">
             <!-- title -->
-            <div class="half inline top">
+            <div class="inline half top logo">
                 <a href="/"><h1 class="left">Chaos Collab</h1></a>
             </div>
             <!-- user box -->
-            <div class="half inline top">
+            <div class="inline half top right">
                 <!-- avatar -->
-                <div class="inline top">
+               
                     <div class="avatar" style="background-image: url({% static 'main_app/images/' %}{{ user.avatar }}.png);"></div>
-                </div>
                 <!-- username -->
-                <div class="inline top right">
-                    <h4 class="right bottom gold"><a href="user/{{ user.id }}">{{ user.alias }}</a></h4><a href="/logout">Logout</a>
+                    <div class="user">
+                    <h4><a href="user/{{ user.id }}">{{ user.alias }}</a></h4><a href="/logout">Logout</a>
                 </div>
             </div>
 
         </div> <!-- end header-->
+
+        
         <div class="main"> <!-- MAIN CONTENT-->
             <div wrapper>
                     <h3 class="left indent30 push_top">My Collabs</h3>
