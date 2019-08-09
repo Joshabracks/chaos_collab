@@ -27,7 +27,7 @@
                         <div class="avatar" style="background-image: url({% static 'main_app/images/' %}{{ user.avatar }}.png);"></div>
                     <!-- username -->
                         <div class="user">
-                        <h4><a href="user/{{ user.id }}">{{ user.alias }}</a></h4><a href="/logout">Logout</a>
+                        <h4><a href="/user/{{ user.id }}">{{ user.alias }}</a></h4><a href="/logout">Logout</a>
                     </div>
                 </div>
     
@@ -41,7 +41,13 @@
 
                     </div>
                     <div class="left">
-
+                        {% if collab.uploaded_by == user %}
+                            <form action="/title/{{ collab.id }}" method="post">
+                            {% csrf_token %}
+                            <input type="text" name="rename">
+                            <input type="submit" value="Rename Collab">
+                            </form>
+                        {% endif %}
                         <h2 class='left indent'>{{ collab.title }}</h2>
                         <h2 class='left indent'>Collaborated by <a
                                 href="/user/{{ collab.uploaded_by.id }}">{{ collab.uploaded_by.alias }}</a></h2>

@@ -8,7 +8,28 @@
 hr{
     border: 1px solid rgb(83, 101, 192);
 }
-
+input[type=submit] {
+    font-weight: bold;
+    background-color: #711C91;
+    color: #EA00D9;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px 2px black;
+    padding: 2px;
+    border: none;
+  }
+  #publish{
+      width: 100%;
+      display: block;
+  }
+  button{
+    font-weight: bold;
+    background-color: #711C91;
+    color: #EA00D9;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px 2px black;
+    padding: 2px;
+    border: none;
+  }
 .sepline{
     background-color: #0ABDC6;
 }

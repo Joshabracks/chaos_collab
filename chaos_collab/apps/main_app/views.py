@@ -169,6 +169,11 @@ def set_avatar(request, collab_id, user_id):
     user.save()
     return redirect('/landing')
 
+def rename_collab(request, collab_id):
+    collab = Collab.objects.get(id = collab_id)
+    collab.title = request.POST['rename']
+    collab.save()
+    return redirect(f'/collab/{collab_id}')
 
 
     # format, imgstr = data.split(baseimagecode) 
