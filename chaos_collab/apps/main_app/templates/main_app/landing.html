@@ -39,16 +39,22 @@
                     <h3 class="left indent30 push_top">My Collabs</h3>
                     {% for collab in user.collabs.all reversed %}
                     {% if forloop.counter < 5 %}
+                    <div class="imageboxwrap">
+                            <p>{% for letter in collab.title %}{% if forloop.counter < 20 %}{{ letter }}{% endif %}{% endfor %}</p>
                     <a href="/collab/{{ collab.id }}"> <img src="{% static 'main_app/images/' %}{{ collab.decoded_img }}" class="imagebox"></a>
+                    </div>
                     {% endif %}
                     {% endfor %}
             </div>
             <div wrapper>
                     <h3 class="left indent30 push_top">Newest Collabs</h3>
                 {% for collab in collabs reversed %}
-                {% if forloop.counter < 16 %}
-                
+                {% if forloop.counter < 40 %}
+                <div class="imageboxwrap">
+                    <p>{% for letter in collab.title %}{% if forloop.counter < 20 %}{{ letter }}{% endif %}{% endfor %}</p>
+                    <p>by <a href="/user/{{ collab.uploaded_by.id }}">{% for letter in collab.uploaded_by.alias %}{% if forloop.counter < 15 %}{{ letter }}{% endif %}{% endfor %}</a></p>
                <a href="/collab/{{ collab.id }}"> <img src="{% static 'main_app/images/' %}{{ collab.decoded_img }}" class="imagebox"></a>
+                </div>
                {% endif %}
                 {% endfor %}
             </div>

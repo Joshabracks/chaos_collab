@@ -62,7 +62,7 @@ def look(request):
 def landing(request):
     context = {
         'collabs': Collab.objects.all(),
-        'user': User.objects.get(id = request.session['user'])
+        'user': User.objects.get(id = request.session['user']),
     }
     return render(request, 'main_app/landing.html', context)
 
@@ -173,6 +173,22 @@ def rename_collab(request, collab_id):
     collab = Collab.objects.get(id = collab_id)
     collab.title = request.POST['rename']
     collab.save()
+    return redirect(f'/collab/{collab_id}')
+
+def like_collab(request, collab_id):
+    collab = Collab.objects.get(id = collab_id)
+    user = User.objects.get(id = request.session['user'])
+    collab.like.add(user)
+    collab.save()
+    user.save()
+    return redirect(f'/collab/{collab_id}')
+
+def unlike_collab(request, collab_id):
+    collab = Collab.objects.get(id = collab_id)
+    user = User.objects.get(id = request.session['user'])
+    collab.like.remove(user)
+    collab.save()
+    user.save()
     return redirect(f'/collab/{collab_id}')
 
 

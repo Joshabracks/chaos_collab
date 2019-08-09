@@ -52,6 +52,7 @@ class Collab(models.Model):
     created_at = models.DateTimeField(auto_now_add = True)
     updated_at = models.DateTimeField(auto_now = True)
     parent = models.CharField(max_length=45, blank=True)
+    like = models.ManyToManyField(User, related_name="likes")
 
 class Comment(models.Model):
     content = models.TextField()

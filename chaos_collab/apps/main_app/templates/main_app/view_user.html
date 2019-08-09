@@ -54,8 +54,11 @@
             <div>
                 <h3 class="left indent30 push_top">{{ user_id.alias }}'s Collabs</h3>
                 {% for collab in user_id.collabs.all reversed %}
+                <div class="imageboxwrap">
+                <p>{% for letter in collab.title %}{% if forloop.counter < 20 %}{{ letter }}{% endif %}{% endfor %}</p></20>
                 <a href="/collab/{{ collab.id }}"> <img src="{% static 'main_app/images/' %}{{ collab.decoded_img }}"
                         class="imagebox"></a>
+                    </div>
                 {% endfor %}
             </div>
         </div><!-- END MAIN CONTENT-->

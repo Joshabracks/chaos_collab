@@ -52,7 +52,13 @@
                         <h2 class='left indent'>Collaborated by <a
                                 href="/user/{{ collab.uploaded_by.id }}">{{ collab.uploaded_by.alias }}</a></h2>
                         <a href="/canvas/{{ collab.id }}">
-                            <h4 class='left gold indent'>Collaborate</a> | <a href="/set_avatar/{{ collab.id }}/{{ user.id }}">Set this as my Avatar</a></h4>
+                            <h4 class='left gold indent'>Collaborate</a> | <a href="/set_avatar/{{ collab.id }}/{{ user.id }}">Set this as my Avatar</a> | 
+                            {% if user in collab.like.all %}
+                            <a href="/unlike_collab/{{ collab.id }}">💖</a>
+                            {% else %}
+                            <a href="/like_collab/{{ collab.id }}">🖤</a>
+                            {% endif %}
+                            </h4>
                         
                         <img class="maincollab" src="{% static 'main_app/images/' %}{{ collab.decoded_img }}">
 

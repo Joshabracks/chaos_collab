@@ -16,5 +16,7 @@ urlpatterns = [
     url(r'^post_comment$', views.post_comment),
     url(r'^set_avatar/(?P<collab_id>\d+)/(?P<user_id>\d+)$', views.set_avatar),
     url(r'^title/(?P<collab_id>\d+)$', views.rename_collab),
+    url(r'^like_collab/(?P<collab_id>\d+)$', views.like_collab),
+    url(r'^unlike_collab/(?P<collab_id>\d+)$', views.unlike_collab),
 
 ]

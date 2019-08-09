@@ -178,6 +178,18 @@ body{
     display: block;
 }
 
+.imageboxwrap{
+    width: 210px;
+    height: 175px;
+    text-align: center;
+    vertical-align: top;
+    display: inline-block;
+    color:#EA00D9;
+    font-weight: bolder;
+    background-color: rgb(64, 75, 131);
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
 
 .imagebox{
     width: 200px;
@@ -198,6 +210,7 @@ body{
 
 
 }
+
 .maincollab{
     width: 80%;
     min-width: 300px;
@@ -281,6 +294,8 @@ body{
 
 a{
     color: white;
+    text-decoration: none;
+    font-weight: 800;
 }
 
 .indent{
