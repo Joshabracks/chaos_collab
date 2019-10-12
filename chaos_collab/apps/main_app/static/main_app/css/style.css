@@ -64,7 +64,7 @@ body{
     text-align: center;
     height: 50px;
     min-width: 401px;
-    border-bottom-color: #0ABDC6;
+    border-bottom-color: rgb(102, 116, 189);
     border-bottom-width: 1px;
     border-bottom-style: solid;
 
@@ -176,6 +176,17 @@ body{
     text-align: left;
     width: 100%;
     display: block;
+}
+.displaycase{
+    height: 184px;
+    direction: rtl;
+    overflow:auto;
+    outline-color: rgb(102, 116, 189);
+    outline-width: 1px;
+    outline-style: solid;
+    -webkit-box-shadow: 0 12px 6px -3px rgba(0, 0, 0, 0.623);
+       -moz-box-shadow: 0 12px 6px -3px rgba(0, 0, 0, 0.623);
+       box-shadow: 0 12px 6px -3px rgba(0, 0, 0, 0.623);
 }
 
 .imageboxwrap{
@@ -389,6 +400,7 @@ a{
 
 .sidebar{
     max-width: 200px;
+    
 }
 
 
@@ -420,3 +432,5 @@ a{
   ::-webkit-scrollbar-thumb:hover {
     background: rgb(102, 116, 189); 
   }
+
+  

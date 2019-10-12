@@ -23,25 +23,8 @@
 
 <body>
     <div class="container">
-        <!-- header -->
-        <div class="header">
-            <!-- title -->
-            <div class="inline half top logo">
-                <a href="/"><h1 class="left">Chaos Collab</h1></a>
-            </div>
-            <!-- user box -->
-            <div class="inline half top right">
-                <!-- avatar -->
-               
-                    <div class="avatar" style="background-image: url({% static 'main_app/images/' %}{{ user.avatar }}.png);"></div>
-                <!-- username -->
-                    <div class="user">
-                    <h4><a href="/user/{{ user.id }}">{{ user.alias }}</a></h4><a href="/logout">Logout</a>
-                </div>
-            </div>
-
-        </div> <!-- end header-->
-        <div class="main">
+       
+        
             <div class="main_draw center">
 
                 <!-- start left side bar -->
@@ -61,7 +44,10 @@
                     <div class="parentbox">
                         <img src="{% static 'main_app/images/' %}{{ collab.decoded_img }}" height=120px width=200px>
                     </div>
-                    <div><button id="publish">Publish</button></div>
+                    <div>
+                      <button id="publish">Publish</button>
+                    
+                    </div>
                     <div id="color_listener">
                         
                         {% for i in colors %}<button style="background-color:{{ i }}" class="color_picker top"
@@ -77,7 +63,7 @@
    
                         <canvas width="1200" height="720" id="paint"></canvas>
                     </div>
-                </div>
+                
                 <!-- end canvas -->
 
             </div>
@@ -142,6 +128,7 @@
       this.ctx.lineJoin = "round";
       this.ctx.imageSmoothingEnabled;
       this.drawing = false;
+      this.first_point = true;
       this.addCanvasEvents();
     },
     addCanvasEvents: function () {
@@ -169,9 +156,14 @@
         this.options.y2 = evt.page.y - this.canvas_coords.top;
         var y = this.options.y1;
         var x = this.options.x1;
-        var yincr = ((this.options.y2-y)/250);
-        var xincr = ((this.options.x2-x)/250);
-        for (var i = 0; i < 250; i++) {
+        var ydis = Math.abs(this.options.y2 - this.options.y1);
+        var xdis = Math.abs(this.options.x2 - this.options.x1);
+        var incr = xdis+ydis/2;
+
+        var yincr = ((this.options.y2-y)/incr);
+        var xincr = ((this.options.x2-x)/incr);
+
+        for (var i = 0; i < incr+1 ; i++) {
           this.ctx.beginPath();
           this.ctx.arc(x, y, this.options.line_width/2.5, 7, 0, 2 * Math.PI);
           this.ctx.fill();
@@ -181,6 +173,7 @@
         }
         this.options.x1 = evt.page.x - this.canvas_coords.left;
         this.options.y1 = evt.page.y - this.canvas_coords.top;
+        this.first_point = false;
       
 
 

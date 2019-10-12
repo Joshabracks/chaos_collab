@@ -58,6 +58,7 @@
                             {% else %}
                             <a href="/like_collab/{{ collab.id }}">🖤</a>
                             {% endif %}
+                            {{ collab.like.count }}
                             </h4>
                         
                         <img class="maincollab" src="{% static 'main_app/images/' %}{{ collab.decoded_img }}">

@@ -6,8 +6,6 @@ import base64
 from base64 import b64decode
 from django.core.files.base import ContentFile
 from django.conf import settings
-from django.shortcuts import render
-
 
 def index(request):
     try:
